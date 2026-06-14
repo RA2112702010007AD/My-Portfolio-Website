@@ -2,6 +2,7 @@ export interface Project {
   title: string;
   subtitle: string;
   sourceUrl?: string;
+  deployUrl?: string;
   technologies: string[];
   highlights: string[];
 }
@@ -73,8 +74,8 @@ export const resumeData: ResumeData = {
     location: "Chennai, Tamil Nadu, India",
     phone: "+91 7200417473",
     email: "anuragdas.87542026@outlook.com",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
+    linkedin: "https://www.linkedin.com/in/anurag-das-90005b223/",
+    github: "https://github.com/RA2112702010007AD",
     hackerRank: "https://hackerrank.com"
   },
   professionalSummary: "Integrated M.Tech student in Computer Science and Engineering (Cognitive Computing) with experience in Artificial Intelligence, Machine Learning, Generative AI, Natural Language Processing, Retrieval-Augmented Generation (RAG), and Software Development. Skilled in developing AI proof-of-concepts, scalable applications, predictive analytics solutions, intelligent automation systems, and cloud-enabled AI workflows. Strong foundation in Python, Machine Learning, FastAPI, SQL, cloud technologies, and software engineering principles with demonstrated success through internships, research publications, and industry projects.",
@@ -202,8 +203,9 @@ export const resumeData: ResumeData = {
   projects: [
     {
       title: "Reflective RAG: Self-Correcting AI Research Assistant",
-      subtitle: "Research Publication in IEEE ICT 2026",
-      sourceUrl: "https://github.com",
+      subtitle: "Research Publication in IEEE ICICT  2026",
+      sourceUrl: "https://github.com/RA2112702010007AD/Reflective-RAG-IEEE-Project",
+      deployUrl: "https://reflective-rag-ieee-project.vercel.app/?_vercel_share=roNTTrpDZZzFztUNu7zszQeL1o7zPjJV",
       technologies: ["Python", "LangChain", "OpenAI API", "FastAPI", "FAISS", "Streamlit", "NLP"],
       highlights: [
         "Designed and developed a Retrieval-Augmented Generation (RAG) framework to improve factual accuracy and reduce hallucinations in AI-generated responses.",
@@ -217,7 +219,7 @@ export const resumeData: ResumeData = {
     {
       title: "Smart Poultry Health Management: AI-Powered Disease Detection",
       subtitle: "Full-Stack Predictive System",
-      sourceUrl: "https://github.com",
+      sourceUrl: "https://github.com/RA2112702010007AD/Smart-Poultry-Health-Assistant",
       technologies: ["Python", "Machine Learning", "Random Forest", "Gradient Boosting", "Streamlit", "SQL"],
       highlights: [
         "Developed an AI-powered disease prediction system using environmental sensor data including temperature, humidity, Carbon Dioxide, and ammonia levels.",
@@ -230,7 +232,7 @@ export const resumeData: ResumeData = {
     {
       title: "Social Media Analytics to Strengthen Global Collaboration",
       subtitle: "NLP and Sentiment Mining Model",
-      sourceUrl: "https://github.com",
+      sourceUrl: "https://github.com/RA2112702010007AD/cross-lingual-grammar-aware-translater-IndianLanguages",
       technologies: ["Python", "NLP", "TF-IDF", "Machine Learning", "Data Visualization"],
       highlights: [
         "Developed NLP-based analytics using Cursor IDE with Claude assistance using prompt engineering to analyze large-scale social media conversations.",

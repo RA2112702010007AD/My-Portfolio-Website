@@ -160,6 +160,18 @@ export default function ProjectsShowcase({ selectedSkill, onClearSkillFilter }: 
                       <Github className="w-4 h-4" />
                       View Repository
                     </a>
+                    {project.deployUrl && (
+                      <a
+                        href={project.deployUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`project-${idx}-deploy-link`}
+                        className="text-xs font-semibold text-indigo-600 hover:text-slate-900 flex items-center gap-1.5 transition-colors cursor-pointer"
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Live Demo
+                      </a>
+                    )}
                   </div>
                 </div>
               </motion.div>

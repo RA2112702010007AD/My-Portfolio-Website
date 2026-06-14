@@ -221,7 +221,7 @@ export default function App() {
                     8.78
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-700 leading-tight">M.Tech student (Cognitive Computing)</h4>
+                    <h4 className="text-xs font-bold text-slate-700 leading-tight">M.Tech Integrated Student CSE w/s Cognitive Computing</h4>
                     <p className="text-[10px] text-slate-500 mt-0.5">SRM University (2021 – 2026) | CGPA: 8.78/10</p>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ export default function App() {
                   </div>
                   <div>
                     <h4 className="text-xs font-bold text-slate-700 leading-tight">First-Author Published Researcher</h4>
-                    <p className="text-[10px] text-slate-500 mt-0.5">Author of "Reflective RAG" IEEE Xplore ICT 2026 Publication</p>
+                    <p className="text-[10px] text-slate-500 mt-0.5">Author of "Reflective RAG" IEEE Xplore ICICT  2026 Publication</p>
                   </div>
                 </div>
 

@@ -1,16 +1,5 @@
-import express from "express";
-import path from "path";
-import dotenv from "dotenv";
 import { GoogleGenAI } from "@google/genai";
-import { createServer as createViteServer } from "vite";
-import { resumeData } from "./src/resumeData.js"; // Import resume data for system context
-
-dotenv.config();
-
-const app = express();
-const PORT = 3000;
-
-app.use(express.json());
+import { resumeData } from "../src/resumeData.js";
 
 // Initialize Gemini SDK with custom telemetry header
 const ai = new GoogleGenAI({
@@ -49,8 +38,24 @@ Instructions for your personality & responses:
 6. Provide concrete examples and code stacks from his resume. For instance, if asked about Python or FastAPI, reference the 'Reflective RAG' project or 'Smart Poultry Health Management'.
 `;
 
-// Recruiter chat endpoint
-app.post("/api/chat", async (req, res) => {
+export default async function handler(req: any, res: any) {
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: "Method Not Allowed" });
+  }
+
   try {
     const { message, history } = req.body;
     if (!message) {
@@ -59,16 +64,11 @@ app.post("/api/chat", async (req, res) => {
 
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({
-        error: "GEMINI_API_KEY is not configured. Please add it to your secrets.",
+        error: "GEMINI_API_KEY is not configured. Please add it to your Vercel Environment Variables.",
       });
     }
 
-    // Prepare contents format for chats. sendMessage expects a message parameter.
-    // However, to supply pre-existing custom chat history with the Gemini chats, we can create a chat session.
-    // Let's translate user visual history into Gemini format, or just do a single-turn with history appended to maintain precise control.
-    // Using single-turn is often more reliable for injecting the complete system instructions and chat history in one go.
-    
-    // Construct single call with full history
+    // Construct history parts
     let contents: any[] = [];
     if (history && Array.isArray(history)) {
       history.forEach((h: { sender: "user" | "bot"; text: string }) => {
@@ -79,7 +79,7 @@ app.post("/api/chat", async (req, res) => {
       });
     }
     
-    // Append current user message
+    // Append current message
     contents.push({
       role: "user",
       parts: [{ text: message }],
@@ -95,32 +95,9 @@ app.post("/api/chat", async (req, res) => {
     });
 
     const text = response.text || "I apologize, but I couldn't formulate an answer. Feel free to ask another question.";
-    res.json({ text });
+    return res.status(200).json({ text });
   } catch (error: any) {
-    console.error("Error in /api/chat:", error);
-    res.status(500).json({ error: error.message || "An error occurred during response generation." });
+    console.error("Error in serverless api/chat:", error);
+    return res.status(500).json({ error: error.message || "An error occurred during response generation." });
   }
-});
-
-// Vite middleware for development vs static serve for production
-async function start() {
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), "dist");
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
-  }
-
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on port ${PORT}`);
-  });
 }
-
-start();

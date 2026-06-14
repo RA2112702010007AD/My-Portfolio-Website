@@ -1,0 +1,6 @@
+{
+  "name": "Anurag Das Portfolio",
+  "description": "A professional portfolio website for Anurag Das, specializing in AI, Machine Learning, Cognitive Computing, and Full Stack Development, featuring an interactive Recruiter AI Assistant.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

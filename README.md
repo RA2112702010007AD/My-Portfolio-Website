@@ -234,12 +234,6 @@ https://my-portfolio-website-jlhb.vercel.app
 💻 GitHub
 https://github.com/RA2112702010007AD
 
-💼 LinkedIn
-(Add your LinkedIn URL)
-
-📧 Email
-(Add your Email)
-
 ---
 
 # ⭐ Support

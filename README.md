@@ -234,6 +234,12 @@ https://my-portfolio-website-jlhb.vercel.app
 💻 GitHub
 https://github.com/RA2112702010007AD
 
+💼 LinkedIn
+https://www.linkedin.com/in/anurag-das-90005b223/
+
+📧 Email
+anuragdas.1803@gmail.com
+
 ---
 
 # ⭐ Support
